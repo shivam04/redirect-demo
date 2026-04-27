@@ -4,33 +4,25 @@
   <title>Redirect Demo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
-    body {
-      font-family: Arial;
-      text-align: center;
-      margin-top: 100px;
-    }
-    button {
-      padding: 15px 25px;
-      margin: 10px;
-      font-size: 16px;
-    }
+    body { font-family: Arial; text-align: center; margin-top: 100px; }
+    button { padding: 15px 25px; margin: 10px; font-size: 16px; }
   </style>
 </head>
-
 <body>
   <h1>Payment Demo</h1>
   <p>Simulate Success or Failure</p>
-
   <button onclick="success()">✅ Success</button>
   <button onclick="error()">❌ Error</button>
-
   <script>
-    function success() {
-        window.location.href = "myapp://success?status=ok";
-    }
+    const params = new URLSearchParams(window.location.search);
+    const successUrl = params.get('successUrl');
+    const errorUrl = params.get('errorUrl');
 
+    function success() {
+      window.location.href = `${successUrl}?status=ok&orderId=123`;
+    }
     function error() {
-        window.location.href = "myapp://error?status=failed&reason=payment_failed";
+      window.location.href = `${errorUrl}?status=failed&reason=payment_failed`;
     }
   </script>
 </body>
