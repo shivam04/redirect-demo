@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Redirect Demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      margin-top: 100px;
+    }
+    button {
+      padding: 15px 25px;
+      margin: 10px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Payment Demo</h1>
+  <p>Simulate Success or Failure</p>
+
+  <button onclick="success()">✅ Success</button>
+  <button onclick="error()">❌ Error</button>
+
+  <script>
+    function success() {
+        window.location.href = "myapp://success?status=ok";
+    }
+
+    function error() {
+        window.location.href = "myapp://error?status=failed&reason=payment_failed";
+    }
+  </script>
+</body>
+</html>
